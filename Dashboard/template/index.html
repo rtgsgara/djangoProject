@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content=""/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title> Fraud Click </title>
+		<!-- Windows 8 Tiles -->
+		<meta name="msapplication-TileColor" content="#FFFFFF"/>
+		<!-- ****** faviconit.com favicons ****** -->
+
+
+	<body>
+        <h1>Dashboard</h1>
+        <h2>Training Prediction -</h2>
+        <h2>{{ usage }}</h2>
+
+        <br>
+        <h2>CPU Utilization</h2>
+        <canvas id="cpu_util"></canvas>
+        <br>
+        <h2>Memory Utilization</h2>
+        <canvas id="memory_util"></canvas>
+        <br>
+        <h2>Total Clicks</h2>
+        <canvas id="myChart"></canvas>
+
+        <h2>Predicted Attributed Clicks</h2>
+        <canvas id="myChart2"></canvas>
+        <h2>Atrubuted vs Non-attributed Clicks</h2>
+        <canvas id="myChart3"></canvas>
+
+        <h2>IPs with most clicks</h2>
+        <canvas id="chart4"></canvas>
+
+        <h2>Channel with most clicks</h2>
+        <canvas id="chart5"></canvas>
+
+        <h2>Suspected frauds (IP and Device combination with 0 or no attributed clicks)</h2>
+        <canvas id="chart6"></canvas>
+    </body>
+<script>var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: {{ vara|safe }},
+        datasets: [{
+            label: 'Clicks',
+
+            borderColor: 'rgb(255, 99, 132)',
+            data: {{ varb|safe }}
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});</script>
+
+<script>var ctx = document.getElementById('myChart2').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: {{ varc|safe }},
+        datasets: [{
+            label: 'Attributed Clicks',
+
+            borderColor: 'rgb(255, 80, 100)',
+            data: {{ vard|safe }}
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});</script>
+
+
+<script>var ctx = document.getElementById('myChart3').getContext('2d');
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data:{
+    datasets: [{
+         backgroundColor:['rgb(0, 99, 132)','rgb(255, 99, 132)'],
+        data:  {{ pied|safe }}
+
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Attributed',
+        'Non-Attributed Clicks',
+    ]
+},
+    options: {}
+});</script>
+
+<script>var ctx = document.getElementById('chart4').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: {{ ip|safe }},
+        datasets: [{
+            label: 'Zeroes',
+
+            backgroundColor: 'rgb(255, 99, 132)',
+            data: {{ s0|safe }}
+        },
+        {
+            label: 'Ones',
+
+            backgroundColor: 'rgb(0, 99, 132)',
+            data: {{ s1|safe }}
+        }
+        ],
+
+    },
+
+    // Configuration options go here
+    options:  {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+});</script>
+
+
+<script>var ctx = document.getElementById('chart6').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: {{ ip_device |safe }},
+        datasets: [{
+            label: '(Ip, device) having less than 1 or 0 downloads',
+
+            backgroundColor: 'rgb(255, 99, 132)',
+            data: {{ ip_device_values |safe }}
+        }
+        ],
+
+    },
+
+    // Configuration options go here
+    options:  {
+    }
+});</script>
+
+
+<script>var ctx = document.getElementById('chart5').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: {{ channel|safe }},
+        datasets: [{
+            label: 'Zeroes',
+
+            backgroundColor: 'rgb(255, 99, 132)',
+            data: {{ c0|safe }}
+        },
+        {
+            label: 'Ones',
+
+            backgroundColor: 'rgb(0, 99, 132)',
+            data: {{ c1|safe }}
+        }
+        ],
+
+    },
+
+    // Configuration options go here
+    options:  {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+});</script>
+
+<script>var ctx = document.getElementById('cpu_util').getContext('2d');
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data:{
+    datasets: [{
+         backgroundColor:['rgb(255, 99, 132)','rgb(200, 200, 200)'],
+        data:  {{ cpu_util|safe }}
+
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'CPU Utilization',
+        'Idle CPU',
+    ]
+},
+    options: {}
+});</script>
+
+<script>var ctx = document.getElementById('memory_util').getContext('2d');
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data:{
+    datasets: [{
+         backgroundColor:['rgb(255, 99, 132)','rgb(200, 200, 200)'],
+        data:  {{ memory_util|safe }}
+
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Memory Utilisation',
+        'Free memory',
+    ]
+},
+    options: {}
+});</script>
+
+</html>

@@ -1,0 +1,294 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<head>
+    <meta charset="UTF-8" />
+	<meta name="description" content=""/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> Fraud Click </title>
+	<!-- Windows 8 Tiles -->
+	<meta name="msapplication-TileColor" content="#FFFFFF"/>
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'css/picto-foundry-emotions.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/picto-foundry-household.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/picto-foundry-shopping-finance.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/picto-foundry-general.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+</head>
+	<body>
+
+        <div class="pushWrapper">
+		    <!-- Header (shown on mobile only) -->
+			<header class="pageHeader">
+				<!-- Menu Trigger -->
+				<button class="menu-trigger">
+					<span class="lines"></span>
+				</button>
+
+				<!-- Logo -->
+			    <a class="headerLogo smoothScroll" href="#">
+			    	<i class=" step icon-search size-26"></i>
+					<span class="text">Fraud Click</span>
+				</a>
+			</header>
+
+		    <!-- Sidebar -->
+			<div class="sidebar">
+
+				<nav class="mainMenu">
+					<ul class="menu">
+                        <li>
+							<a class="smoothScroll" href="#stastistical-part" title="Statistics"><i class="icon-reciept-1 size-24"></i><span class="text">Statistics</span></a>
+						</li>
+
+						<li>
+							<a class="smoothScroll" href="#timeline-part" title="What Is Fraud Click?"><i class="step icon-question size-24"></i><span class="text">What is Fraud Click?</span></a>
+						</li>
+
+						<li>
+							<a class="smoothScroll" href="#tips-part" title="Important Tips"><i class="step icon-light-bulb size-24"></i><span class="text">Important Tips</span></a>
+                        </li>
+                        <li>
+							<a class="smoothScroll" href="#section-team" title="Team Members"><i class="step icon-thumbs-up size-24"></i><span class="text">Team Members</span></a>
+						</li>
+
+					</ul>
+				</nav>
+
+				<nav class="backToTop">
+					<ul class="backToTop-menu">
+						<li><a class="smoothScroll" href="#section-intro" title="to the top"><i class="fa fa-chevron-up"></i><span class="text">Back to top</span></a></li>
+					</ul>
+				</nav>
+
+			</div>
+
+        <main>
+
+		<section style="background-image: url({% static 'images/3.jpg' %});  background-repeat: no-repeat;
+        background-attachment: fixed;background-size: contain;
+        "  id="section-intro" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
+		<div class="content" >
+				<div class="container-template">
+				    <h1 style="font-weight: 900;">
+				    	<i class="step icon-search size-36"></i>
+				        <span class="seconday">Study and Statistics of</span>
+				        <span>CLICK FRAUD</span>
+				    </h1>
+			    </div>
+		    </div>
+        </section>
+
+        <section class="stastistical-part" id="stastistical-part">
+
+			<!-- Content -->
+			<div class="content">
+				<div class="container-template " >
+
+					<div class="headergroup">
+                        <h2 class="in-point">
+                            <span class="seconday">Upload</span>
+                            <span> CSV file</span>
+                        </h2>
+                    </div>
+                    <br><br>
+                    <div class="statistics form" style=" padding:30px; background-color:darkcyan">
+
+                        <form method="POST" class="post-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div style="margin-left:230px;">
+                                {{ form.as_p }}
+                            </div>
+                            <button type="submit" class="save btn btn-default">Check statistics</button>
+                        </form>
+
+			</div>
+		</div>
+	</div>
+
+        </section>
+
+
+		<section class="timeline-part" id="timeline-part">
+
+	<div class="content">
+		<div class="container-template">
+
+			<div class="headergroup">
+			    <h2 class="in-point">
+			        <span class="seconday">What Is</span>
+			        <span>Click Fraud?</span>
+			    </h2>
+		    </div>
+
+		    <div class="intro content-template x">
+		       <img src="{% static 'images/1.png'%}" max-width="500px" width="100%">
+		    </div>
+
+		    <ul class="timeline">
+					<li class="year"></li>
+				    <li class="upper-line">
+				    	<span >Click fraud is a type of fraud that occurs on the Internet in pay-per-click (PPC) online advertising.</span>
+				    	<span class=" paragraph-text">&#8220; In this type of advertising, the owners of websites that post the ads are paid an amount of money determined by how many visitors to the sites click on the ads.&#8221;
+
+						</span>
+                    </li>
+                    <li class="year"></li>
+				    <li class="upper-line">
+				    	<span >Fraud occurs </span>
+				    	<span class=" paragraph-text">&#8220;when a person, automated script, or computer program imitates a legitimate user of a web browser, clicking on such an ad without having an actual interest in the target of the ad's link.&#8221;
+						</span>
+                    </li>
+                    <li class="year"></li>
+				    <li class="upper-line">
+
+				    </li>
+
+			    </ul>
+		    </div>
+	    </div>
+
+		</section>
+		<br><br>
+		<!-- Important Tips -->
+		<section class="tips-part" id="tips-part" >
+
+
+				<div class="container-template">
+					<div class="headergroup">
+                        <h2 class="in-point">
+                            <span class="seconday">Important Tips to</span>
+                            <span>Prevent Click Fraud</span>
+                        </h2>
+                    </div>
+				</div>
+		<br>
+
+
+
+				    <div class="content-template" style="background-image: url({% static 'images/6.jpg' %}); background-repeat: no-repeat;
+                    background-attachment: fixed;background-size: cover; padding:70px; justify-content:center; display:flex; color:cyan;">
+				        <ul>
+							<li>
+								<i class="icon-task-check"></i> Set different bid prices for content-targeted sites
+							</li>
+							<li>
+								<i class="icon-task-check"></i> Keep an eye on your competitors
+							</li>
+							<li>
+								<i class="icon-task-check"></i> Always track your advertising campaigns
+							</li>
+							<li>
+								<i class="icon-task-check"></i> Only advertise in specific countries
+							</li>
+							<li>
+								<i class="icon-task-check"></i> Target high-value sites for your ads
+							</li>
+							<li>
+								<i class="icon-task-check"></i>  Purchase software programs that generate special referral reports
+							</li>
+						</ul>
+				    </div>
+
+
+		</section>
+
+		<br><br>
+		<!--  TEAM SECTION-->
+		<section class="section-team" id="section-team">
+	    <div class="content">
+				<div class="container-template">
+
+                        <div class="headergroup">
+                            <h2 class="in-point">
+                                <span class="seconday">Team Members</span>
+                                <span>Team 2</span>
+                            </h2>
+                        </div>
+            <br>
+
+
+			 		<ul class="team-members">
+
+
+                         <li>
+                            <h2>
+                                <span class="seconday">Rahul Tomar</span>
+                            </h2>
+
+                            <div class="team-member-text content-template">
+                                <p style="font-size: large;">Indian Institute of Management, Bodh Gaya </p>
+
+                            </div>
+                        </li>
+                        <li>
+                            <h2>
+                                <span class="seconday">Dipanshu Upreti</span>
+                            </h2>
+
+                            <div class="team-member-text content-template">
+                                <p style="font-size: large;">Birla Institute Of Applied Sciences</p>
+                            </div>
+                        </li>
+                        <li>
+                            <h2>
+                                <span class="seconday">Vaishnavi Subramanya Desai</span>
+                            </h2>
+
+                            <div class="team-member-text content-template">
+                                <p style="font-size: large;">Bvrit Hyderabad College Of Engineering For Women </p>
+                            </div>
+                        </li>
+                        <li>
+                            <h2>
+                                <span class="seconday">Girish Kumar Reddy Tokala</span>
+                            </h2>
+
+                            <div class="team-member-text content-template">
+                                <p style="font-size: large;">G Pulla Reddy Engineering College </p>
+                            </div>
+                        </li>
+                        <li>
+                            <h2>
+                                <span class="seconday">Ragini Gaurav</span>
+                            </h2>
+
+                            <div class="team-member-text content-template">
+                                <p style="font-size: large;">Manipal Institute Of Technology </p>
+                            </div>
+                        </li>
+
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		</main>
+
+	</div>
+		<script type='text/javascript' src="{% static 'js/jquery.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/jquery-migrate.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/jquery.form.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/jquery.mobile.custom.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/modernizr.js' %}"></script>
+		<script type='text/javascript' src="{% static 's/response.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/swiper.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/waypoints.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/jquery.stellar.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/module.js' %}"></script>
+		<script type='text/javascript' src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/wow.min.js' %}"></script>
+		<script>
+		new WOW().init();
+		</script>
+
+	</body>
+
+</html>

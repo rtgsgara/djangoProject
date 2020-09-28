@@ -112,13 +112,13 @@ var chart = new Chart(ctx, {
     data: {
         labels: {{ ip|safe }},
         datasets: [{
-            label: 'Zeroes',
+            label: 'No Downloads',
 
             backgroundColor: 'rgb(255, 99, 132)',
             data: {{ s0|safe }}
         },
         {
-            label: 'Ones',
+            label: 'Downloads',
 
             backgroundColor: 'rgb(0, 99, 132)',
             data: {{ s1|safe }}
@@ -174,13 +174,13 @@ var chart = new Chart(ctx, {
     data: {
         labels: {{ channel|safe }},
         datasets: [{
-            label: 'Zeroes',
+            label: 'No Downloads',
 
             backgroundColor: 'rgb(255, 99, 132)',
             data: {{ c0|safe }}
         },
         {
-            label: 'Ones',
+            label: 'Downloads',
 
             backgroundColor: 'rgb(0, 99, 132)',
             data: {{ c1|safe }}
